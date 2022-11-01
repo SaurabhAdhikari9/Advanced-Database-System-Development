@@ -1,0 +1,2 @@
+INTCAP(FirstName) => makes firstname's first letter in upper case and remaing in the lower case.
+
