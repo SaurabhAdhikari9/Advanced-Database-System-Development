@@ -1,0 +1,179 @@
+1. Display details of jobs where the minimum salary is greater than 50000.
+
+	SELECT * FROM jobs
+	WHERE min_salary > 5000;
+
+
+
+2. Display the first name and join date of the employees who joined between 2001 and
+   20010.
+
+	SELECT first_name, hire_date FROM employees 
+	WHERE To_Char(hire_date, 'YYYY')  
+	BETWEEN '2001' 
+	AND '2010';
+
+
+
+3. Display first name and join date of the employees who is either IT Programmer or Sales
+   Man.
+
+
+
+
+
+4. Display employees who joined after 1st January 2012.
+
+	SELECT * FROM employees
+	WHERE hire_date ='01-JAN-2012';
+
+
+
+
+
+5. Display details of employee with ID 152 or 180.
+	SELECT * FROM employees
+	where employee_id = '152' OR employee_id ='180';
+
+
+
+
+
+
+6. Display first name, salary, commission pct, and hire date for employees with salary less
+   than 10000.
+
+	SELECT first_name, salary, comission_pct, hire_date FROM employees
+	WHERE salary <10000;
+
+
+
+
+
+7. Display job Title, the difference between minimum and maximum salaries for jobs with
+   max salary in the range 10000 to 20000.
+
+	SELECT job_title,max_salary-min_salary salary_diff FROM jobs
+	WHERE max_salary BETWEEN 10000 AND 20000;
+
+
+8. Display first name, salary, and round the salary to thousands.
+	SELECT first_name, ROUND(salary, -3) 
+	FROM employees;
+
+
+9. Display details of jobs in the descending order of the title.
+	SELECT * FROM jobs
+	ORDER BY job_title DESC;
+
+
+10. Display employees where the first name or last name starts with K.
+
+	SELECT * from employees
+	WHERE first_name like 'K%'
+	OR last_name like 'K%';
+
+
+11. Display employees who joined in the month of June.
+	
+	SELECT * FROM employees WHERE TO_CHAR(hire_date, 'MON')= 'JUN';
+
+
+12. Display details of the employees where commission percentage is null and salary in the
+    range 5000 to 10000 and department is 30.
+
+	select * from employees
+	where commission_pct = null
+	and salary between 5000 and 10000
+	and department_id = 30;
+
+13. Display first name and date of first salary of the employees.
+
+	select first_name, LAST_DAY(hire_date) from employees;
+
+14. Display first name and experience of the employees.
+
+	select first_name, ROUND((SYSDATE-HIRE_dATE)/365,2) FROM EMPLOYEES;
+
+	
+	select first_name, To_char(SYSDATE,'YYYY')-TO_Char(hire_date,'YYYY') FROM EMPLOYEES;
+
+
+15. Display first name of employees who joined in 2001.
+	select first_name from employees
+	where To_Char(hire_Date, 'YYYY') = '2001';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select employee_id, first_name,department_id, salary
+from employees 
+where ( department_id , salary ) IN 
+(
+    select department_id, salary 
+    from employees
+    group by department_id, salary
+    having count(*) > 1
+)
+order by department_id , salary,employee_id;

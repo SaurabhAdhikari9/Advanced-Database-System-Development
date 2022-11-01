@@ -1,0 +1,36 @@
+select * from all_users -> show databases;
+
+#check user
+select user from dual;
+
+
+#unlock user hr
+alter user hr identified by islington account unlock;	
+
+#change system password
+
+connect / as sysdba;
+
+alter user system identified by islington;
+
+
+
+#create user
+create user cr identified by messi;
+
+
+#give privilage
+garnt connect, resource to cr;
+
+
+#list out tables
+select table_name from user_tables;
+	
+
+
+sql type
+1. DDL -> 
+2. DML -> update, insert detele select
+3. DCL -> privilage (grant revoke)
+4. TCl -> Commit, rollback
+5. DQL -> 
