@@ -1,0 +1,14 @@
+Aggreate function
+
+sum
+count
+min
+max
+avg
+
+mostly using groupby clause
+
+case for using groupby:
+
+case 1: 
+	select department_id, avg(salary) from employees group by department_id;
